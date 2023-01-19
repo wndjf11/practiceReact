@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+    const DOM = ReactDOM.createRoot(document.getElementById("root"))
+    let counter = 0;
+    const Container = () => {
+        <div>
+            <h3>Total clicks: {counter}
+            </h3>
+        </div>
+    };
+
+    ReactDOM.render(<Container />, root);
+
+
+    // function countUp() {
+    //     counter++;
+    //     Render();
+    // }
+
+    // function Render() {
+    //     return (
+    //         DOM.render(
+    //             <Container />
+    //         )
+    //     )
+    // }
+
+    // function Container() {
+    //     return (
+    //         <div>
+    //             <h3>Total clicks: {counter} </h3>
+    //             <button onClick={countUp}>Click me</button>
+    //         </div>
+    //     )
+    // };
+    // Render();
+</script>
+
+</html>
