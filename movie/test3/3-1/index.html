@@ -8,19 +8,59 @@
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const root = document.getElementById("root");
-    function Title() {
-        return <h3 id="title"
-            onMouseEnter={() => console.log("mouse enter")}>Hello I'm a span</h3>;
-    };
-    const Button = () => (<button style={{
-        backgroundColor: "tomato",
-    }} onClick={() => console.log("im clicked")}>Click me
-    </button>)
 
-    // const container = React.createElement("div", null, [Title, Button]);
-    const Container = () => (<div><Title /> <Button /> </div>);
-    ReactDOM.render(<Container/>, root);
+    // const DOM = ReactDOM.createRoot(document.getElementById("root"))
+    // let counter = 0;
+    // function countUp() {
+    //     //code
+
+    // }
+    // function Container() {
+    //     const [counter, modifier] = React.useState(0); // [undefined , f] undefine
+    //     const counter = data[0];
+    //     const modifier =data[1];
+    //     console.log(data);
+    //     return (
+    //         <div>
+    //             <h3>Total clicks: {counter} </h3>
+    //             <button>Click me</button>
+    //         </div>
+    //     )
+    // };
+
+    // function Render() {
+    //     return (
+    //         DOM.render(
+    //             <Container />
+    //         )
+    //     )
+    // }
+
+    // Render();
+
+    // 수정---
+    // const DOM = ReactDOM.createRoot(document.getElementById("root"))
+    const root = document.getElementById("root");
+    function App() {
+        const [counter, modifier] = React.useState(); // [undefined , f] undefine
+        return (
+            <div>
+                <h3>Total clicks: {counter} </h3>
+                <button>Click me</button>
+            </div>
+        )
+    };
+    ReactDOM.render(<App />, root);
+
+    // function Render() {
+    //     return (
+    //         DOM.render(
+    //             <App />
+    //         )
+    //     )
+    // }
+
+    // Render();
 </script>
 
 </html>

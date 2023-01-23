@@ -11,14 +11,35 @@
 
     const DOM = ReactDOM.createRoot(document.getElementById("root"))
     let counter = 0;
-    const Container = () => {
-        <div>
-            <h3>Total clicks: {counter}
-            </h3>
-        </div>
-    };
+    function countUp() {
+        counter++;
+        Render();
+    }
 
-    ReactDOM.render(<Container />, root);
+    function Render() {
+        return (
+            DOM.render(
+                <Container />
+            )
+        )
+    }
+    function Container() {
+        // return
+        // (
+        // <div>
+        //     <h3>Total clicks: {counter} </h3>
+        //     <button onClick={countUp}>Click me</button>
+        // </div>
+        // )
+        return (
+            <div>
+                <h3>Total clicks: {counter} </h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        )
+    };
+    // // ReactDOM.render(<Container />, root);
+    // Render();
 
 
     // function countUp() {
@@ -42,7 +63,7 @@
     //         </div>
     //     )
     // };
-    // Render();
+    Render();
 </script>
 
 </html>
