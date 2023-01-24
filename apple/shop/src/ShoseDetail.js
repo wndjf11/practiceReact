@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import { Nav } from "react-bootstrap";
 
 function Detail(props) {
   useEffect(() => {});
@@ -14,8 +14,9 @@ function Detail(props) {
 
   const [hidden, setHidden] = useState(false);
 
-  const [count, setCount] = useState(0);
+  const [tab, setTab] = useState(0);
 
+  const [count, setCount] = useState(0);
   const { id } = useParams();
   const 찾은상품 = props.shoes.find(function (x) {
     return x.id == id;
@@ -26,13 +27,15 @@ function Detail(props) {
       <button
         onClick={() => {
           setCount((value) => value + 1);
-        }}>
+        }}
+      >
         버튼
       </button>
       <button onClick={reset}>보이기</button>
       <div
         className="alert alert-warning"
-        style={{ display: hidden === false ? "none" : "block" }}>
+        style={{ display: hidden === false ? "none" : "block" }}
+      >
         2초이내 구매시 할인
       </div>
       <div className="row">
@@ -53,8 +56,49 @@ function Detail(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+
+      <Nav variant="tabs" defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(0);
+            }}
+          >
+            버튼0
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(1);
+            }}
+          >
+            버튼1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTab(2);
+            }}
+          >
+            버튼2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabContent tab={tab} />
     </div>
   );
+}
+
+function TabContent(props) {
+  if (props.tab == 0) {
+    return <div>내용0</div>;
+  } else if (props.tab == 1) {
+    return <div>내용1</div>;
+  } else if (props.tab == 2) {
+    return <div>내용2</div>;
+  }
 }
 
 export default Detail;
