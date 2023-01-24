@@ -1,11 +1,21 @@
-/* eslint-disable */
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import "./Opacity.css";
 import { Context1 } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../store/store";
 
 function Detail(props) {
+  const cart = useSelector((state) => {
+    return state.cart;
+  });
+
+  const temp = useEffect(() => {
+    return;
+  });
+  const dispatch = useDispatch();
+
   let { 재고 } = useContext(Context1);
   const [fade2, setFade2] = useState("");
   useEffect(() => {
@@ -63,11 +73,19 @@ function Detail(props) {
             width="100%"
           />
         </div>
-        <div className="col-md-6 mt-4">
+        <div className="col-md-6">
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}원</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(addItem({ id: 1, name: "Red Knit", count: 1 }));
+              console.log(cart);
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
 
