@@ -1,9 +1,22 @@
-import { useEffect, useState } from "react";
+/* eslint-disable */
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import "./Opacity.css";
+import { Context1 } from "../App";
 
 function Detail(props) {
-  useEffect(() => {});
+  let { 재고 } = useContext(Context1);
+  const [fade2, setFade2] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      setFade2("end");
+    }, 500);
+    return () => {
+      setFade2("");
+    };
+  }, []);
+
   setTimeout(() => {
     setHidden((value) => false);
   }, 2000);
@@ -22,8 +35,9 @@ function Detail(props) {
     return x.id == id;
   });
   return (
-    <div className="container">
-      {count}
+    <div className={"container start" + fade2}>
+      {/* {count} */}
+      <div>{재고[0]}</div>
       <button
         onClick={() => {
           setCount((value) => value + 1);
@@ -86,19 +100,28 @@ function Detail(props) {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent tab={tab} />
+      <TabContent 탭={tab} />
     </div>
   );
 }
 
-function TabContent(props) {
-  if (props.tab == 0) {
-    return <div>내용0</div>;
-  } else if (props.tab == 1) {
-    return <div>내용1</div>;
-  } else if (props.tab == 2) {
-    return <div>내용2</div>;
-  }
+function TabContent({ 탭 }) {
+  const [fade, setFade] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFade("end");
+    }, 1000);
+    return () => {
+      setFade("");
+    };
+  }, [탭]);
+
+  return (
+    <div className={"start " + fade}>
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]}
+    </div>
+  );
 }
 
 export default Detail;
