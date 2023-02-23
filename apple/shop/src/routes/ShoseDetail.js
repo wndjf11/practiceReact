@@ -70,6 +70,7 @@ function Detail(props) {
               (parseInt(id) + 1) +
               ".jpg"
             }
+            alt="test"
             width="100%"
           />
         </div>

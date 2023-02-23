@@ -47,16 +47,16 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          {cart.map(function (a, i) {
+          {cart.map((it) => {
             return (
               <tr>
-                <td>{cart[i].id}</td>
-                <td>{cart[i].name}</td>
-                <td>{cart[i].count}</td>
+                <td>{it.id}</td>
+                <td>{it.name}</td>
+                <td>{it.count}</td>
                 <td>
                   <button
                     onClick={() => {
-                      dispatch(increaseCount(cart[i].id));
+                      dispatch(increaseCount(it.id));
                     }}
                   >
                     ⨧

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import data from "./data";
 import axios from "axios";
 import ShoseDetail from "./routes/ShoseDetail";
@@ -10,6 +10,7 @@ import "./App.css";
 export let Context1 = createContext();
 
 function App() {
+  const navigate = useNavigate();
   const [shoses, setShoses] = useState(data);
   let [재고, 재고변경] = useState([10, 11, 12]);
   const [img] = useState([
@@ -33,10 +34,27 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/detail/0">Detail</Nav.Link>
-            <Nav.Link href="/cart">Cart</Nav.Link>
-            <Link to="/cart">cart</Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/detail/0");
+              }}
+            >
+              Detail
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -89,7 +107,7 @@ function App() {
   function Card(props) {
     return (
       <div>
-        <img src={props.img} width="80%" />
+        <img src={props.img} width="80%" alt="" />
         <h4>{props.shoses.title}</h4>
         <p>{props.shoses.price} 원</p>
       </div>
